@@ -1,0 +1,10 @@
+version: "3"
+services:
+  #Genarators Services
+  genaretors-csv-services:
+    build: ./services/generators/csv
+    volumes:
+    - ./services/generators/csv/:/var/www/html/
+    working_dir: /var/www/html/public/
+    ports:
+    - 5000:80
