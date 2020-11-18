@@ -2,9 +2,14 @@ version: "3"
 services:
   #Genarators Services
   genaretors-csv-services:
-    build: ./services/generators/csv
+    container_name: csv-generator
+    build:
+      context: ./services/generators/csv
+      dockerfile: service-build/Dockerfile
+      args:
+        - UID=${UID}
+        - IMAGE_VERSION=${GEN_CSV_IMAGE_VERSION}
     volumes:
-    - ./services/generators/csv/:/var/www/html/
-    working_dir: /var/www/html/public/
+    - ./services/generators/csv/src:/var/www/html
     ports:
-    - 5000:80
+    - ${GEN_CSV_PORT}:8000
