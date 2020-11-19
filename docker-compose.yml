@@ -13,3 +13,15 @@ services:
     - ./services/generators/csv/src:/var/www/html
     ports:
     - ${GEN_CSV_PORT}:8000
+
+  web:
+    container_name: web
+    build:
+      context: ./web
+      dockerfile: docker/Dockerfile
+    volumes:
+    - ./web/src:/usr/src/nuxt-app
+    ports:
+      - ${WEB_PORT}:3000
+
+
